@@ -7,17 +7,17 @@ url_template = "https://telegov.njportal.com/njmvc/CustomerCreateAppointments/Ge
 month = "07"
 date_to_beat = 28
 locations = {
-    "55": "Lodi (35 minutes)",
-    "47": "Bayonne (15 minutes)",
-    "263": "Elizabeth (25 minutes)",
-    "56": "Newark (20 minutes)",
-    "60": "Rahway (30 minutes)",
-    "57": "North Bergen (20 minutes)",
-    "59": "Paterson (35 minutes)",
-    "67": "Wayne (35 minutes)",
-    "58": "Oakland (45 minutes)",
-    "63": "South Plainfield (40 minutes)",
-    "52": "Edison (40 minutes)",
+    "55": "Lodi",
+    "47": "Bayonne",
+    "263": "Elizabeth",
+    "56": "Newark",
+    "60": "Rahway",
+    "57": "North Bergen",
+    "59": "Paterson",
+    "67": "Wayne",
+    "58": "Oakland",
+    "63": "South Plainfield",
+    "52": "Edison",
 }
 
 def check_availability():
