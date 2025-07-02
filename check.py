@@ -1,11 +1,14 @@
 # https://telegov.njportal.com/njmvc/CustomerCreateAppointments/GetAvailableDatesForMonth?duration=30&locationId=46&appointmentId=7&date=2022-06-01T04:00:00.000Z
-# https://www.twilio.com/blog/5-ways-http-requests-python
+# https://telegov.njportal.com/njmvc/AppointmentWizard 
 import json
 import requests
 
-url_template = "https://telegov.njportal.com/njmvc/CustomerCreateAppointments/GetAvailableDatesForMonth?duration=30&locationId={}&appointmentId=7&date=2022-{}-01T04:00:00.000Z"
+url_template = "https://telegov.njportal.com/njmvc/CustomerCreateAppointments/GetAvailableDatesForMonth?duration={}&locationId={}&appointmentId={}&date={}-{}-01T04:00:00.000Z"
+duration = "20"
+appointment_type = "289"
+year = "2025"
 month = "07"
-date_to_beat = 28
+date_to_beat = 31
 locations = {
     "55": "Lodi",
     "47": "Bayonne",
@@ -24,9 +27,10 @@ def check_availability():
     for key in locations:
         if not key.startswith("__"):
             location = locations[key]
-            url = url_template.format(key, month)
+            url = url_template.format(duration, key, appointment_type, year, month)
             response = requests.get(url)
             json_response = json.loads(response.text)
+            # print("url", url)
             if len(json_response) > 0:
                 date = json_response[0][8:10]
                 if int(date) < date_to_beat:
@@ -34,5 +38,5 @@ def check_availability():
                     print("first appointment on {}".format(json_response[0]))
                     print("https://telegov.njportal.com/njmvc/AppointmentWizard/7/{}\n".format(key))
 
-
-check_availability()
+if __name__ == "__main__":
+    check_availability()
